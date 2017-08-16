@@ -405,15 +405,10 @@ namespace Borne2017.ViewModel
             {
                 if( this._bookCommand == null)
                 {
-                    this._bookCommand = new RelayCommand(BookAction);
+                    this._bookCommand = new RelayCommand(Booking);
                 }
                 return this._bookCommand;
             }
-        }
-
-        private void BookAction()
-        {       
-            Booking();
         }
 
         private ICommand _cancelCommand;
@@ -424,15 +419,10 @@ namespace Borne2017.ViewModel
             {
                 if(this._cancelCommand == null)
                 {
-                    this._cancelCommand = new RelayCommand(CancelAction);
+                    this._cancelCommand = new RelayCommand(Cancel);
                 }
                 return this._cancelCommand;
             }
-        }
-
-        private void CancelAction()
-        {
-            Cancel();
         }
 
         private ICommand _confirmCommand;
@@ -482,9 +472,8 @@ namespace Borne2017.ViewModel
 
         public void ActualizeAction()
         {
-            InitializeAsync();
-            CafeLocation = new Geopoint(new BasicGeoposition() { Latitude = 50.4673883, Longitude = 4.871985399999971 });
             Cancel();
+            CafeLocation = new Geopoint(new BasicGeoposition() { Latitude = 50.4673883, Longitude = 4.871985399999971 });          
         }
         //*******************************************************
         //*                    FIN ACTION BUTTON                *
@@ -541,21 +530,3 @@ namespace Borne2017.ViewModel
         //*******************************************************
     }
 }
-
-/*await dialogService.ShowMessage("Une réservation a bien été effectuée au nom de ",
-                        "Réservation",
-                        buttonConfirmText: "Ok", buttonCancelText: "Annuler",
-                                afterHideCallback: (confirmed) =>
-                                {
-                                    if (confirmed)
-                                    {
-                                        // User has pressed the "confirm" button.
-                                        // ...
-                                    }
-                                    else
-                                    {
-                                        // User has pressed the "cancel" button
-                                        // (or has discared the dialog box).
-                                        // ...
-                                    }
-                                });*/
